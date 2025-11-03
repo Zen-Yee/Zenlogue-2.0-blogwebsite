@@ -1,0 +1,142 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.pink {
+  background-color: #937475;
+}
+
+.lightpink{
+  background-color: rgb(255, 189, 189);
+}
+
+body {
+  background-image: url('/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#headerBar {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+#headerBar > h1 {
+  padding: 7px 12px 0px 12px;
+}
+
+#headerBar > h1 > a {
+  text-decoration: none;
+  color: white;
+}
+
+#Navigation {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#Navigation a {
+  float: left;
+  text-align: center;
+  text-decoration: none;
+  height: 100%;
+  padding: 15px 12px 0px 12px;
+  display: block;
+  color: black;
+}
+
+#Navigation a:hover {
+  background-color:#7fa0aa;
+}
+
+#mainContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.postContainer {
+  height: 300px;
+  margin: 20px;
+  background-color: rgba(252, 243, 211,0.6);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+#sidebar {
+  width: 600px; 
+  background-color: #7fa0aa; 
+  /* overflow-x: hidden;  */
+  padding: 20px;
+  color: white;
+}
+
+.centered-Container {
+  width: 100%;
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-Container>*{
+  font-size: 1.2rem;
+}
+
+.centered-Container>form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 10%;
+  border-radius: 20px;
+}
+
+.centered-Container label{
+  color:white;
+}
+
+.textbox{
+    padding: 2%;
+    border: 10px;
+    border-radius: 5px;
+    width: 250px;
+}
+
+.AboutMe-Contact{
+    margin: 1em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.AboutMe-Contact>a>img{
+    width: 4em;
+}
+
+.aboutMe-Text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutMe *{
+    padding: 5%;
+}
+
+footer {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; 
+  align-items: center;
+}

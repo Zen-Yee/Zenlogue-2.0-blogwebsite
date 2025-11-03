@@ -1,0 +1,33 @@
+<%- include('partials/header.ejs') %>
+
+<div id="signupForm" class="centered-Container">
+  <form action="/Register" method="POST" class="pink">
+    <label for="userName">Username</label>
+    <input class="textbox" type="text" placeholder="Enter Username" name="userName" required />
+    <br>
+    <label for="eMail">Email</label>
+    <input class="textbox" type="email" id="eMail" name="eMail" placeholder="Enter Email" required />
+    <br>
+    <label for="passWord">Password</label>
+    <input class="textbox" type="password" placeholder="Enter Password" name="passWord" required/>
+    <br>
+    <label for="confirmPassword">Retype Password</label>
+    <input class="textbox" type="password" placeholder="Retype Password" id="confirmPassword" name="confirmPassword" required />
+    <br>
+    <input type="submit" value="Submit" />
+  </form>
+</div>
+
+<script>
+function validatePasswords() {
+  const pass = document.getElementById('password').value;
+  const confirm = document.getElementById('confirmPassword').value;
+  if (pass !== confirm) {
+    alert('Passwords do not match.');
+    return false; // stops form submission
+  }
+  return true;
+}
+</script> 
+
+<%- include('partials/footer.ejs') %>

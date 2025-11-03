@@ -1,0 +1,39 @@
+<%- include('partials/header.ejs') %>
+
+<div id="mainContainer">
+  <div id="articleContainer">
+    <section class="blog-post">
+      <% posts.forEach(item => { %>
+        <div class="postContainer">
+          <h2><%= item.title %></h2>
+          <p class="date"><%= item.date %></p>
+          <p class="author"><%= item.author %></p>
+          <p class="content"><%= item.content %> <a href="#">Read more...</a></p>
+        </div>
+      <% }) %>
+    </section>
+
+    <p>Older Posts &rarr;</p>
+
+    <% if(loginStatus === "1") {%>
+
+      <section class="blog-update">
+        <form action="/posts/new" method="POST">
+          <input type="text" name="title" placeholder="Title" required />
+          <textarea name="content" placeholder="Write your post here…" rows="5" required></textarea>
+          <button type="submit">Submit Post</button>
+        </form>
+      </section>
+
+    <% } %>
+  </div>
+
+  <div id="sidebar">
+    <h3>About Me</h3>
+    <p>Hi, I’m Zen—a self-taught web developer on a mindful journey to become a full-stack builder. 
+      I enjoy exploring new technologies, experimenting with code, and sharing every “aha” moment along the way.</p>
+    <a href="/about">Read More &rarr;</a>
+  </div>
+</div>
+
+<%- include('partials/footer.ejs') %>
