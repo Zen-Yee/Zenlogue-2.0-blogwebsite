@@ -1,5 +1,5 @@
 import express from 'express';
-import db from './db/pool.js';
+import db from '../db/pool.js';
 
 const router = express.Router();
 
@@ -11,7 +11,7 @@ router.get('/:id', async (req, res) => {
 
   try {
     const query = `
-      SELECT * FROM post
+      SELECT * FROM public.posts
       WHERE post_id = $1
     `;
     const result = await db.query(query, [postId]);

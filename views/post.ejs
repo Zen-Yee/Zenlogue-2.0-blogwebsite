@@ -1,7 +1,14 @@
 <%- include('partials/header.ejs') %>
 
 <div id="mainContainer">
-
+    <section class="blog-post">
+        <div class="postContainer onlyOne">
+          <h2><%= post.post_title %></h2>
+          <p class="date"><%= post.created_at %></p>
+          <p class="author"><%= post.user_id %></p>
+          <p class="content"><%= post.post_content %></p>
+        </div>
+    </section>
 </div>
 
 <%- include('partials/footer.ejs') %>

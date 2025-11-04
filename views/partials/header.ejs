@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="/styles/main.css">
 
   <title>Zenlogue</title>
 </head>
@@ -16,7 +16,7 @@
       <div id="Navigation" >
         <a class="navButton active" href="/">Home</a>
         <a class="navButton" href="/about">About</a>
-        <% if(loginStatus === "1") {%>
+        <% if(loginStatus === 1) {%>
           <a class="navButton" href="/logout">Log Out</a>
         <% }else{ %>
           <a class="navButton" href="/login">Log In</a>

@@ -5,10 +5,10 @@
     <section class="blog-post">
       <% posts.forEach(item => { %>
         <div class="postContainer">
-          <h2><%= item.title %></h2>
-          <p class="date"><%= item.date %></p>
-          <p class="author"><%= item.author %></p>
-          <p class="content"><%= item.content %> <a href="#">Read more...</a></p>
+          <h2><%= item.post_title %></h2>
+          <p class="date"><%= item.created_at %></p>
+          <p class="author"><%= item.user_id %></p>
+          <p class="content"><%= item.post_content %> <a href="post/<%= item.post_id %>">Read more...</a></p>
         </div>
       <% }) %>
     </section>

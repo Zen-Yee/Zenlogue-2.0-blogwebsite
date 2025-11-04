@@ -72,6 +72,10 @@ body {
   border-radius: 20px;
 }
 
+.onlyOne {
+  height: 100vh;
+}
+
 #sidebar {
   width: 600px; 
   background-color: #7fa0aa; 
