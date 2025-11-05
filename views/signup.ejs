@@ -1,7 +1,7 @@
 <%- include('partials/header.ejs') %>
 
 <div id="signupForm" class="centered-Container">
-  <form action="/Register" method="POST" class="pink">
+  <form action="/signup/Submit" method="POST" class="pink">
     <label for="userName">Username</label>
     <input class="textbox" type="text" placeholder="Enter Username" name="userName" required />
     <br>
@@ -18,7 +18,7 @@
   </form>
 </div>
 
-<script>
+<!-- <script>
 function validatePasswords() {
   const pass = document.getElementById('password').value;
   const confirm = document.getElementById('confirmPassword').value;
@@ -28,6 +28,6 @@ function validatePasswords() {
   }
   return true;
 }
-</script> 
+</script>  -->
 
 <%- include('partials/footer.ejs') %>

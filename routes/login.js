@@ -17,7 +17,7 @@ router.post('/Submit', async (req, res) => {
 
   try {
     const query = `
-      SELECT user_name, password_hash FROM public.users
+      SELECT user_name, password_hash, is_blocked FROM public.users
       WHERE user_name = $1;
     `;
     const result = await db.query(query, [userName]);
@@ -34,6 +34,16 @@ router.post('/Submit', async (req, res) => {
     }; // user not found
 
     const user = result.rows[0];
+
+    if (user.is_blocked) {
+            return res.status(401).send(`
+                <script>
+                    alert("Account Blocked");
+                    window.location.href = "/login";
+                </script>
+            `);
+    }
+
     const match = await bcrypt.compare(passWord, user.password_hash);
 
     if (match) {

@@ -5,6 +5,7 @@ import session from 'express-session';
 import db from './db/pool.js';
 import postRouter from './routes/post.js';
 import loginRouter from './routes/login.js';
+import signupRouter from './routes/signup.js';
 
 const app = express();
 const port =  process.env.PORT;
@@ -27,6 +28,7 @@ app.use((req, res, next) => {
 
 app.use('/post', postRouter);
 app.use('/login', loginRouter);
+app.use('/signup', signupRouter);
 
 app.get("/", async(req, res) => {
   try {
@@ -50,10 +52,6 @@ app.get("/", async(req, res) => {
     }
 });
 
-app.get("/signup", (req, res) => {
-    res.render("signup.ejs");
-});
-
 app.get('/logout', (req, res) => {
   req.session.loginStatus = 0;
   res.redirect('/');  
@@ -61,7 +59,6 @@ app.get('/logout', (req, res) => {
 
 app.get("/about", (req, res) => {
     res.render("about.ejs");
-
 });
 
 app.listen(port, () => {
