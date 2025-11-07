@@ -45,12 +45,14 @@ Zenlogue-2.0/
 |--------|---------|-------------|
 | `/` | GET | Render homepage with all posts |
 | `/post/:id` | GET | Display a single post by ID |
+| `/post/new` | POST | Render new post page |
+| `/post/new/submit` | POST | Submit new post to database |
 | `/signup` | GET | Render signup page |
-| `/signup` | POST | Create new user and store in database |
+| `/signup/Submit` | POST | Create new user and store in database |
 | `/login` | GET | Render login page |
-| `/login` | POST | Authenticate user credentials |
+| `/login/Submit` | POST | Authenticate user credentials |
 | `/logout` | GET | End session and redirect to homepage |
-| `/api/posts` | GET | (API) Return all posts in JSON format |
+| `/about` | GET |  Render new about page |
 
 ## Deployment
 
