@@ -57,7 +57,7 @@ Zenlogue-2.0/
 ## Deployment
 
 Backend: **(To be Added)**  
-Database: PostgreSQL (Railway)
+Database: PostgreSQL (Railway)  
 Frontend: EJS templates served by Express
 
 ## Live Demo:
