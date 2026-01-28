@@ -4,7 +4,8 @@
   "description": "A modern and responsive blogging website built with Node.js, Express.js, and EJS. This project enables users to read, create, edit, and manage blog posts through a clean and intuitive interface.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
