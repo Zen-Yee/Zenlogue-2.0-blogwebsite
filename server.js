@@ -2,10 +2,10 @@ import express from "express";
 import 'dotenv/config';
 import session from 'express-session';
 
-import db from './db/pool.js';
-import postRouter from './routes/post.js';
-import loginRouter from './routes/login.js';
-import signupRouter from './routes/signup.js';
+import db from './config/pool.js';
+import postRouter from './modules/post.js';
+import loginRouter from './modules/login.js';
+import signupRouter from './modules/signup.js';
 
 const app = express();
 const port =  process.env.PORT;
