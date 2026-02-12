@@ -9,6 +9,6 @@ app.use(express.urlencoded({ extended: true })); // Parses URL-encoded form data
 app.use(express.static("public")); //Serves static files from the public folder.
 
 // Mounting routes
-app.use('/auth', authRouter);
+app.use('/auth', authRouter); // Log in, Log out, Register
 
 export default app;

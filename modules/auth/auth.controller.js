@@ -1,10 +1,14 @@
 import * as authService from "../services/auth.service.js";
 
-export const signup = async (req, res) => {
-  try {
-    const { email, password } = req.body;
+export const signup = (req, res) => {
+    res.render("signup.ejs");
+};
 
-    const user = await authService.createUser(email, password);
+export const signupSubmit = async (req, res) => {
+  try {
+    const { eMail, passWord } = req.body;
+
+    const user = await authService.createUser(eMail, passWord);
 
     res.status(201).json(user);
   } catch (err) {
@@ -12,7 +16,11 @@ export const signup = async (req, res) => {
   }
 };
 
-export const login = async (req, res) => {
+export const login = (req, res) => {
+    res.render("login.ejs");
+};
+
+export const loginSubmit = async (req, res) => {
   try {
     const { email, password } = req.body;
 
