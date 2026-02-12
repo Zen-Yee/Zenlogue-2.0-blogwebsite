@@ -1,18 +1,18 @@
 import db from "../config/pool.js";
 import bcrypt from "bcrypt";
 
-export const createUser = async (email, password) => {
-  const hashed = await bcrypt.hash(password, 10);
+export const createUser = async (eMail, passWord) => {
+  const hashed = await bcrypt.hash(passWord, 10);
 
   const result = await db.query(
     "INSERT INTO users (email, password, role) VALUES ($1, $2, $3) RETURNING id, email, role",
-    [email, hashed, "user"]
+    [eMail, hashed, "user"]
   );
 
   return result.rows[0];
 };
 
-export const loginUser = async (email, password) => {
+export const loginUser = async (eMail, passWord) => {
   const result = await db.query(
     "SELECT * FROM users WHERE email = $1",
     [email]
