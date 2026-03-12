@@ -1,8 +1,22 @@
 import express from "express";
+import session from "express-session";
+import dotenv from "dotenv";
+
 import authRouter from './modules/auth/auth.routes.js';
 import postRouter from './modules/post/post.routes.js';
 
+dotenv.config();
 const app = express(); 
+
+// Set up session
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false } // true if using HTTPS
+  })
+);
 
 // Set up Express middleware.
 app.use(express.json()); //Parse incoming request with JSON body
