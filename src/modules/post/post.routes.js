@@ -4,6 +4,7 @@ import { authMiddleware } from "../auth.middleware.js";
 
 const router = express.Router();
 
+router.get("/", postController.allPost);
 router.get("/:id", postController.specificPost);
 router.post("/submit",authMiddleware,postController.createPost)
 

@@ -1,5 +1,6 @@
 import express from "express";
 import authRouter from './modules/auth/auth.routes.js';
+import postRouter from './modules/post/post.routes.js';
 
 const app = express(); 
 
@@ -9,6 +10,8 @@ app.use(express.urlencoded({ extended: true })); // Parses URL-encoded form data
 app.use(express.static("public")); //Serves static files from the public folder.
 
 // Mounting routes
+app.use("/", postRouter); // Mainpage
 app.use('/auth', authRouter); // Log in, Log out, Register
+app.use('/post', postRouter); // display post & create new post
 
 export default app;
