@@ -18,6 +18,13 @@ app.use(
   })
 );
 
+// res.locals: store data specific to the current request/response cycle
+app.use((req, res, next) => {
+  res.locals.year = new Date().getFullYear();
+  res.locals.currentUser = req.session?.user || null;
+  next();
+});
+
 // Set up Express middleware.
 app.use(express.json()); //Parse incoming request with JSON body
 app.use(express.urlencoded({ extended: true })); // Parses URL-encoded form data (from HTML forms).

@@ -7,7 +7,7 @@ export const allPost = async (req, res) => {
 
         // If it return an empty array when SELECT with the post_id, throw error:
         if (!displayAllPost) {
-          // Post not found → return 404 page or redirect
+          // If there is no post at all
           return res.status(404).render('404', { message: 'No post found' });
         }
         

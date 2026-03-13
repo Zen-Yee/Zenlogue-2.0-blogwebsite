@@ -10,18 +10,20 @@
 </head>
 
 <body>
-  <main>
+
     <div id="headerBar" class="pink">
       <h1><a href="/">Zenlogue</a></h1>
       <div id="Navigation" >
         <a class="navButton active" href="/">Home</a>
         <a class="navButton" href="/about">About</a>
-        <% if(loginStatus === 1) {%>
+
+        <% if(currentUser) {%>
           <a class="navButton" href="/auth/logout">Log Out</a>
         <% }else{ %>
           <a class="navButton" href="/auth/login">Log In</a>
           <a class="navButton" href="/auth/signup">Sign Up</a>
         <% } %>
+        
       </div>
       
     </div>

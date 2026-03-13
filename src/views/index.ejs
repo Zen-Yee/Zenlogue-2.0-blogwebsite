@@ -1,5 +1,7 @@
 <%- include('partials/header.ejs') %>
 
+<main>
+  
 <div id="mainContainer">
   <div id="articleContainer">
     <section class="blog-post">
@@ -15,7 +17,7 @@
 
     <p>Older Posts &rarr;</p>
 
-    <% if(loginStatus === "1") {%>
+    <!-- <% if(loginStatus === "1") {%>
 
       <section class="blog-update">
         <form action="/posts/new" method="POST">
@@ -25,7 +27,7 @@
         </form>
       </section>
 
-    <% } %>
+    <% } %> -->
   </div>
 
   <div id="sidebar">
@@ -35,5 +37,7 @@
     <a href="/about">Read More &rarr;</a>
   </div>
 </div>
+
+</main>
 
 <%- include('partials/footer.ejs') %>

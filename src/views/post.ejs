@@ -1,14 +1,16 @@
 <%- include('partials/header.ejs') %>
 
+<main>
+
 <div id="mainContainer">
-    <section class="blog-post">
-        <div class="postContainer onlyOne">
-          <h2><%= post.post_title %></h2>
-          <p class="date"><%= post.created_at %></p>
-          <p class="author"><%= post.user_id %></p>
-          <p class="content"><%= post.post_content %></p>
-        </div>
-    </section>
+  <form action="/post/new/submit" method="POST">
+    <input type="text" name="post_title" placeholder="Title">
+    <textarea name="post_content" placeholder="Content"></textarea>
+    <input type="hidden" name="user_id" value="<%= user.id %>">
+    <button type="submit">Publish</button>
+  </form>
 </div>
+
+</main>
 
 <%- include('partials/footer.ejs') %>

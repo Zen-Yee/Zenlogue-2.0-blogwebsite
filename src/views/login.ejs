@@ -1,7 +1,9 @@
 <%- include('partials/header.ejs') %>
 
+<main>
+
 <div id="loginForm" class="centered-Container">
-  <form action="/login/Submit" method="POST"  class="pink">
+  <form action="/auth/login" method="POST"  class="pink">
     <label for="userName">Username</label>
     <input class="textbox" type="text" placeholder="Enter Username" name="userName" required />
     <br>
@@ -11,5 +13,7 @@
     <input type="submit" value="Submit" />
   </form>
 </div>
+
+</main>
 
 <%- include('partials/footer.ejs') %>
