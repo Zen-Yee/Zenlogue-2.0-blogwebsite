@@ -35,4 +35,5 @@ app.use("/", postRouter); // Mainpage
 app.use('/auth', authRouter); // Log in, Log out, Register
 app.use('/post', postRouter); // display post & create new post
 
+
 export default app;
