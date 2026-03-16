@@ -1,4 +1,4 @@
-import db from "../config/pool.js";
+import db from "../../config/pool.js";
 import bcrypt from "bcrypt";
 
 export const createUser = async (eMail, passWord) => {

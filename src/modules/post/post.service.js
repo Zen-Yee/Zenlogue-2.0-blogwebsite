@@ -1,4 +1,4 @@
-import db from "../config/pool.js";
+import db from "../../config/pool.js";
 
 export const displayAllPost = async () => {
 

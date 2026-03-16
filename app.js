@@ -1,12 +1,22 @@
 import express from "express";
 import session from "express-session";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
-import authRouter from './modules/auth/auth.routes.js';
-import postRouter from './modules/post/post.routes.js';
+import authRouter from './src/modules/auth/auth.routes.js';
+import postRouter from './src/modules/post/post.routes.js';
 
 dotenv.config();
 const app = express(); 
+
+// Fix for __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// View engine setup
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "src/views"));
 
 // Set up session
 app.use(

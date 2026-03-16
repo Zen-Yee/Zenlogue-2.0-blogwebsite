@@ -1,17 +1,16 @@
-import * as postService from "../post.service.js";
-
+import * as postService from "./post.service.js";
 
 export const allPost = async (req, res) => {
     try {
-         const displayAllPost = await postService.displayPost(postId);
+         const posts = await postService.displayAllPost();
 
         // If it return an empty array when SELECT with the post_id, throw error:
-        if (!displayAllPost) {
+        if (!posts ) {
           // If there is no post at all
           return res.status(404).render('404', { message: 'No post found' });
         }
         
-        res.render('index.ejs',{displayAllPost});
+        res.render('index.ejs',{posts });
     
       } catch (err) {
         console.error('Error fetching post:', err);

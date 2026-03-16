@@ -1,5 +1,5 @@
-import * as authService from "../services/auth.service.js";
-import jwt from "jsonwebtoken";
+import * as authService from "./auth.service.js";
+import jwt from 'jsonwebtoken';
 
 export const signup = (req, res) => {
     res.render("signup.ejs");
