@@ -1,4 +1,5 @@
 import * as authService from "../services/auth.service.js";
+import jwt from "jsonwebtoken";
 
 export const signup = (req, res) => {
     res.render("signup.ejs");
@@ -26,10 +27,17 @@ export const loginSubmit = async (req, res) => {
 
     const user = await authService.loginUser(email, password);
 
-    req.session.user = {
-      id: user.id,
-      role: user.role
-    };
+    const token = jwt.sign(
+    { userId: user.user_id, role: user.role },
+    process.env.JWT_SECRET,
+    { expiresIn: "1h" } // 1 hour expiry
+  );
+
+    res.cookie("token", token, {
+    httpOnly: true,
+    secure: false, // set true in production with HTTPS
+    maxAge: 60 * 60 * 1000, // 1 hour
+  });
 
     res.json({ message: "Login successful" });
   } catch (err) {
