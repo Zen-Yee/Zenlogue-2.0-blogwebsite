@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 
+import homeRouter from './src/modules/home/home.routes.js';
 import authRouter from './src/modules/auth/auth.routes.js';
 import postRouter from './src/modules/post/post.routes.js';
 
@@ -41,7 +42,7 @@ app.use(express.urlencoded({ extended: true })); // Parses URL-encoded form data
 app.use(express.static(path.join(__dirname, "src/public")));
 
 // Mounting routes
-app.use("/", postRouter); // Mainpage
+app.use("/", homeRouter); // Mainpage
 app.use('/auth', authRouter); // Log in, Log out, Register
 app.use('/post', postRouter); // display post & create new post
 

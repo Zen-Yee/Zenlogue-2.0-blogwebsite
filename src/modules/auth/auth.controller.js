@@ -7,13 +7,38 @@ export const signup = (req, res) => {
 
 export const signupSubmit = async (req, res) => {
   try {
-    const { eMail, passWord } = req.body;
+    const { username, email, password } = req.body;
 
-    const user = await authService.createUser(eMail, passWord);
+    if (!username || !email || !password) {
+      return res.status(400).render("error", { message: "All fields are required" });
+    }
 
-    res.status(201).json(user);
+    const user = await authService.createUser(username, email, password);
+
+    // Store user in session
+    req.session.user = {
+      user_id: user.user_id,
+      userName: user.user_name,
+      role: user.role
+    };
+
+    const token = jwt.sign(
+      { userId: user.user_id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: false, // true if using HTTPS
+      maxAge: 60 * 60 * 1000
+    });
+
+    res.redirect("/");
+
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    console.error(err);
+    res.status(400).render("error", { message: err.message });
   }
 };
 
@@ -23,30 +48,38 @@ export const login = (req, res) => {
 
 export const loginSubmit = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { userName, passWord } = req.body;
 
-    const user = await authService.loginUser(email, password);
+    const user = await authService.loginUser(userName, passWord);
+
+    // Store user in session
+    req.session.user = {
+      user_id: user.user_id,
+      userName: user.user_name,
+      role: user.role
+    };
 
     const token = jwt.sign(
-    { userId: user.user_id, role: user.role },
-    process.env.JWT_SECRET,
-    { expiresIn: "1h" } // 1 hour expiry
-  );
+      { userId: user.user_id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
 
     res.cookie("token", token, {
-    httpOnly: true,
-    secure: false, // set true in production with HTTPS
-    maxAge: 60 * 60 * 1000, // 1 hour
-  });
+      httpOnly: true,
+      secure: false, // true if using HTTPS
+      maxAge: 60 * 60 * 1000
+    });
 
-    res.json({ message: "Login successful" });
+    res.redirect("/"); // now nav buttons see currentUser
+
   } catch (err) {
-    res.status(401).json({ message: err.message });
+    res.status(401).render("error", { message: err.message });
   }
 };
 
 export const logout = (req, res) => {
   req.session.destroy(() => {
-    res.json({ message: "Logged out" });
+    res.redirect("/"); 
   });
 };

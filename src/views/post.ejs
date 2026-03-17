@@ -3,11 +3,14 @@
 <main>
 
     <section class="blog-post">
+      <% posts.forEach(item => { %>
         <div class="postContainer">
-          <h2><%= posts.post_title %></h2>
-          <p class="date">Last updated: <%= posts.created_at %></p>
-          <p class="author">Author: <%= posts.user_id %></p>
-          <p class="content"><%= posts.post_content %> </p>
+          <h2><%= item.post_title %></h2>
+          <p class="date"><%= item.created_at %></p>
+          <p class="author"><%= item.user_id %></p>
+          <p class="content"><%= item.post_content %></p>
+        </div>
+      <% }) %>
     </section>
 
 </main>

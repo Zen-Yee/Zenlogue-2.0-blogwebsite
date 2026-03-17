@@ -21,15 +21,15 @@ export const allPost = async (req, res) => {
 export const specificPost = async (req, res) => {
     try {
          const postId = req.params.id;
-         const selectedPost = await postService.displayPost(postId);
+         const posts = await postService.displayPost(postId);
 
         // If it return an empty array when SELECT with the post_id, throw error:
-        if (!selectedPost) {
+        if (!posts) {
           // Post not found → return 404 page or redirect
           return res.status(404).render('404', { message: 'Post not found' });
         }
         
-        res.render('post.ejs', { selectedPost });
+        res.render('post.ejs', { posts });
     
       } catch (err) {
         console.error('Error fetching post:', err);

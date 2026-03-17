@@ -5,10 +5,9 @@ import { requireAdmin } from "../../middleware/role.middleware.js";
 
 const router = express.Router();
 
-router.get("/", postController.allPost);           // show posts
 router.get("/:id", postController.specificPost);   // show single post
 
-router.post("/", authMiddleware, requireAdmin, postController.createPost);
+router.post("/create", authMiddleware, requireAdmin, postController.createPost);
 
 // router.get("/:id/edit", authMiddleware, requireAdmin, postController.editPostForm);
 
