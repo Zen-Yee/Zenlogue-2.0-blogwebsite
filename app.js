@@ -38,7 +38,7 @@ app.use((req, res, next) => {
 // Set up Express middleware.
 app.use(express.json()); //Parse incoming request with JSON body
 app.use(express.urlencoded({ extended: true })); // Parses URL-encoded form data (from HTML forms).
-app.use(express.static("public")); //Serves static files from the public folder.
+app.use(express.static(path.join(__dirname, "src/public")));
 
 // Mounting routes
 app.use("/", postRouter); // Mainpage
