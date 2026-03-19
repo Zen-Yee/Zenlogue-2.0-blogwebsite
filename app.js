@@ -42,9 +42,21 @@ app.use(express.urlencoded({ extended: true })); // Parses URL-encoded form data
 app.use(express.static(path.join(__dirname, "src/public")));
 
 // Mounting routes
-app.use("/", homeRouter); // Mainpage
+app.use("/home", homeRouter); // Mainpage
 app.use('/auth', authRouter); // Log in, Log out, Register
 app.use('/post', postRouter); // display post & create new post
 
+// Error handling, will route to here if error found in any routes with next(error).
+// That's why it need to be place after mounting routes.
+
+// 404 handler
+app.use((req, res, next) => {
+  const err = new Error("Page not found");
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+app.use(errorHandler);
 
 export default app;

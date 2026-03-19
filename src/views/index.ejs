@@ -5,6 +5,9 @@
 <div id="mainContainer">
   <div id="articleContainer">
     <section class="blog-post">
+      <% if (posts.length === 0) { %>
+        <p>No posts yet</p>
+      <% } else { %>
       <% posts.forEach(item => { %>
         <div class="postContainer">
           <h2><%= item.post_title %></h2>
@@ -12,7 +15,7 @@
           <p class="author"><%= item.user_id %></p>
           <p class="content"><%= item.post_content %> <a href="post/<%= item.post_id %>">Read more...</a></p>
         </div>
-      <% }) %>
+      <% })} %>
     </section>
 
     <p>Older Posts &rarr;</p>
