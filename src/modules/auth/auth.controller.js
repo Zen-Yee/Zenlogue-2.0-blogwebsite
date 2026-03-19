@@ -55,9 +55,9 @@ export const login = (req, res) => {
 
 export const loginSubmit = async (req, res) => {
   try {
-    const { userName, passWord } = req.body;
+    const { username, password } = req.body;
 
-    const user = await authService.loginUser(userName, passWord);
+    const user = await authService.loginUser(username, password);
 
     // Store user in session
     req.session.user = {
@@ -81,12 +81,12 @@ export const loginSubmit = async (req, res) => {
     res.redirect("/"); // now nav buttons see currentUser
 
   } catch (err) {
-    res.status(401).render("error", { message: err.message });
+    next(err);
   }
 };
 
 export const logout = (req, res) => {
   req.session.destroy(() => {
-    res.redirect("/");
+    res.redirect("/home");
   });
 };
