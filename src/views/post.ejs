@@ -1,18 +1,31 @@
 <%- include('partials/header.ejs') %>
 
-<main>
+  <main>
 
     <section class="blog-post">
-      <% posts.forEach(item => { %>
-        <div class="postContainer">
-          <h2><%= item.post_title %></h2>
-          <p class="date"><%= item.created_at %></p>
-          <p class="author"><%= item.user_id %></p>
-          <p class="content"><%= item.post_content %></p>
-        </div>
-      <% }) %>
+      <div>
+        <% posts.forEach(item=> { %>
+          <div class="postContainer">
+            <h2><%= item.post_title %></h2>
+            <p class="date"><%= item.created_at %></p>
+            <p class="author"><%= item.user_id %></p>
+            <p class="content">
+              <%= item.post_content %>
+            </p>
+          </div>
+          <% }) %>
+
+          <!-- <% comment.forEach(item=> { %>
+          <div class="commentContainer">
+            <h2><%= item.commentContent%></h2>
+            <p class="date"><%= item.created_at %></p>
+            <p class="author"><%= item.user_id %></p>
+          </div>
+          <% }) %> -->
+
+      </div>
     </section>
 
-</main>
+  </main>
 
-<%- include('partials/footer.ejs') %>
+  <%- include('partials/footer.ejs') %>

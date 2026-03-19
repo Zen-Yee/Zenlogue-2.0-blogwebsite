@@ -21,10 +21,10 @@ export const specificPost = async (req, res) => {
 
 export const createPost = async (req, res) => {
   try {
-    const { post_title, post_content, user_id } = req.body;
-    const createPost = await postService.createPost(post_title, post_content, user_id);
+    const { post_title, post_content } = req.body;
+    const createPost = await postService.createPost(post_title, post_content, req.user.userId);
 
-    res.render('post.ejs', { createPost });
+    res.redirect(`/post/${post.post_id}`, { createPost });
 
   } catch (err) {
     next(err);
