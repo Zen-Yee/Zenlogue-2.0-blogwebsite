@@ -8,10 +8,10 @@ import homeRouter from './src/modules/home/home.routes.js';
 import authRouter from './src/modules/auth/auth.routes.js';
 import postRouter from './src/modules/post/post.routes.js';
 
-dotenv.config();
+dotenv.config(); // loads environment variables from .env file
 const app = express(); 
 
-// Fix for __dirname in ES modules
+// Fix for __dirname in ES modules 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
