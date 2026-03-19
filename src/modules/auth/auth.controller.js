@@ -2,15 +2,23 @@ import * as authService from "./auth.service.js";
 import jwt from 'jsonwebtoken';
 
 export const signup = (req, res) => {
-    res.render("signup.ejs");
+  res.render("signup.ejs");
 };
 
 export const signupSubmit = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, confirmPassword } = req.body;
 
-    if (!username || !email || !password) {
-      return res.status(400).render("error", { message: "All fields are required" });
+    if (!username || !email || !password || !confirmPassword) {
+      const err = new Error("All fields are required");
+      err.status = 400;
+      return next(err);
+    }
+
+    if (password !== confirmPassword) {
+      const err = new Error("Passwords do not match");
+      err.status = 400;
+      return next(err);
     }
 
     const user = await authService.createUser(username, email, password);
@@ -34,16 +42,15 @@ export const signupSubmit = async (req, res) => {
       maxAge: 60 * 60 * 1000
     });
 
-    res.redirect("/");
+    res.redirect("/home");
 
   } catch (err) {
-    console.error(err);
-    res.status(400).render("error", { message: err.message });
+    next(err);
   }
 };
 
 export const login = (req, res) => {
-    res.render("login.ejs");
+  res.render("login.ejs");
 };
 
 export const loginSubmit = async (req, res) => {
@@ -80,6 +87,6 @@ export const loginSubmit = async (req, res) => {
 
 export const logout = (req, res) => {
   req.session.destroy(() => {
-    res.redirect("/"); 
+    res.redirect("/");
   });
 };
