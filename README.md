@@ -63,7 +63,13 @@ Zenlogue-2.0/
 | `/post/:id` | GET | Display a single post by ID |
 | `/post/create` | POST | Submit new post content and store in database |
 | `/post/id/edit` | GET | Render post edit page with post content by id |
-| `/post/id` | PATCH | Submit updated post content and update in database |
+| `/post/:id` | PATCH | Submit updated post content and update in database |
+| `/post/:id` | DELETE | Remove row based on post_id in database |
+| `/comment/create` | POST | Submit new comment and store in databasee |
+| `/comment/:id` | PATCH | Submit updated comment content and update in database |
+| `/comment/:id` | DELETE | Remove row based on comment_id in database |
+
+
 
 ## Deployment
 

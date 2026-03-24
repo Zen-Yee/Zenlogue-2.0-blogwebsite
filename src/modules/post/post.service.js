@@ -24,22 +24,10 @@ export const displayPost = async (postId) => {
   return result.rows[0];
 };
 
-export const getCommentsByPost = async (postId) => {
-
-  const query = `
-    SELECT * FROM comments 
-    WHERE post_id = ? ORDER BY created_at ASC
-  `;
-
-  const result = await db.query(query, [postId]);
-
-  return result.rows; // array of comments
-};
-
 export const createPost = async (post_title, post_content, user_id) => {
 
   const query = `
-    INSERT INTO post (post_title, post_content, user_id)
+    INSERT INTO public.post (post_title, post_content, user_id)
       VALUES ($1,$2,$3)
       RETURNING *;
   `;
@@ -51,13 +39,24 @@ export const createPost = async (post_title, post_content, user_id) => {
 export const updatedPost = async (postId, post_title, post_content) => {
 
   const query = `
-    UPDATE post 
+    UPDATE public.post 
       SET post_title = $1, post_content = $2)
       WHERE post_id = $3
       RETURNING *;
   `;
 
     await db.query(query, [post_title, post_content, postId]);
+  return result.rows[0];
+};
+
+export const confirmDeletePost = async (postId) => {
+
+  const query = `
+    DELETE FROM public.post
+      WHERE post_id = $1;
+  `;
+
+  await db.query(query, [postId]);
   return result.rows[0];
 };
 

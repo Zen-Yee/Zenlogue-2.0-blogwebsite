@@ -9,7 +9,7 @@
             <h2><%= item.post_title %></h2>
 
             <% if (currentUser && currentUser.role === "admin") { %>
-              <a href="/post/<%= item.post_id %>/edit" class="navButton">Edit</a>
+              <a href="/post/<%= item.post_id %>/edit" class="Button">Edit</a>
             <% } %>
 
             <p class="date"><%= item.created_at %></p>
@@ -25,15 +25,22 @@
             <h2><%= item.commentContent%></h2>
             <p class="date"><%= item.created_at %></p>
             <p class="author"><%= item.user_id %></p>
-          </div>
+            <% if (currentUser === item.user_id) { %>
+              <a href="/comment/<%= item.comment_id %>/edit" class="Button">Edit</a>
+            <% } %>
 
+            <% if (currentUser === item.user_id || currentUser.role === "admin") { %>
+              <a href="/comment/<%= item.comment_id %>/delete" class="Button">Delete</a>
+            <% } %>
+
+          </div>
+          <% }) %>
+          
           <div class="commentForm">
             <form action="/comment/create" method="POST">
               
             </form>
           </div>
-
-          <% }) %>
 
       </div>
     </section>

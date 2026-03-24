@@ -1,4 +1,5 @@
 import * as postService from "./post.service.js";
+import * as commentService from "./comment.service.js";
 
 export const specificPost = async (req, res) => {
   try {
@@ -68,6 +69,10 @@ export const updatePost = async (req, res) => {
 
 export const deletePost = async (req, res) => {
   try {
+    const postId = req.params.id;
+    const posts = await postService.confirmDeletePost(postId);
+
+    res.redirect("/home");
 
   } catch (err) {
     next(err);
