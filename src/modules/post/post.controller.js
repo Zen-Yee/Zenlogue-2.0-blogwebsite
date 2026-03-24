@@ -30,3 +30,43 @@ export const createPost = async (req, res) => {
     next(err);
   }
 };
+
+export const editPostForm = async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const posts = await postService.displayPost(postId);
+
+    // If it return an empty array when SELECT with the post_id, throw error:
+    if (!posts) {
+      const err = new Error("Post not found");
+      err.status = 404;
+      return next(err);
+    }
+
+    res.render('edit-post.ejs', { posts });
+
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const updatePost = async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const { post_title, post_content } = req.body;
+    const posts = await postService.updatedPost(postId,post_title, post_content);
+
+    res.redirect(`/post/${postId}`, { posts });
+
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const deletePost = async (req, res) => {
+  try {
+
+  } catch (err) {
+    next(err);
+  }
+};

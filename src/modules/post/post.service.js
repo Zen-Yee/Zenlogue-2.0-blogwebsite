@@ -35,3 +35,17 @@ export const createPost = async (post_title, post_content, user_id) => {
     await db.query(query, [post_title, post_content, user_id]);
   return result.rows[0];
 };
+
+export const updatedPost = async (postId, post_title, post_content) => {
+
+  const query = `
+    UPDATE post 
+      SET post_title = $1, post_content = $2)
+      WHERE post_id = $3
+      RETURNING *;
+  `;
+
+    await db.query(query, [post_title, post_content, postId]);
+  return result.rows[0];
+};
+
