@@ -24,6 +24,18 @@ export const displayPost = async (postId) => {
   return result.rows[0];
 };
 
+export const getCommentsByPost = async (postId) => {
+
+  const query = `
+    SELECT * FROM comments 
+    WHERE post_id = ? ORDER BY created_at ASC
+  `;
+
+  const result = await db.query(query, [postId]);
+
+  return result.rows; // array of comments
+};
+
 export const createPost = async (post_title, post_content, user_id) => {
 
   const query = `

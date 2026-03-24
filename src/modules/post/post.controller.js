@@ -12,7 +12,10 @@ export const specificPost = async (req, res) => {
       return next(err);
     }
 
-    res.render('post.ejs', { posts });
+    // fetch all comments for this post
+    const comments = await commentService.getCommentsByPost(postId);
+
+    res.render('post.ejs', { posts, comments });
 
   } catch (err) {
     next(err);

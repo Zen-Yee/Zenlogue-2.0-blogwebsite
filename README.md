@@ -19,22 +19,33 @@ Deployment: **(Backend to be Added)** / Railway (PostgreSQL)
 ## Folder Structure
 ```
 Zenlogue-2.0/  
-│  
-├── /public/              # Static files (Photos & CSS)
-│    └── /styles/
-│
-├── /views/               # EJS templates
-│    └── /partials/       # Header & Footer template
-│
-├── /routes/              # Express route files
-│    ├── post.js
-│    ├── signup.js
-│    └── login.js
-│
-├── /db/
-│    └── pool.js          # PostgreSQL connection setup
+├── /src/    
+│    ├──/public/              # Static files (Photos & CSS)
+│    │    ├── /Images/
+│    │    └── /styles/
+│    │         └── main.css
+│    │
+│    ├── /config/
+│    │    └── pool.js          # PostgreSQL connection setup
+│    │
+│    ├──/views/               # EJS templates
+│    │    └── /partials/       # Header & Footer template
+│    │
+│    ├── /modules/              
+│    │    ├── /auth/
+│    │    │    ├── auth.routes.js
+│    │    │    ├── auth.controller.js
+│    │    │    └── auth.service.js
+│    │    ├── /post/
+│    │    └── /home/
+│    │
+│    └── /middleware/
+│         ├── auth.middleware.js          # PostgreSQL connection setup
+│         ├── err.middleware.js          # PostgreSQL connection setup
+│         └── role.middleware.js          # PostgreSQL connection setup
 │
 ├── server.js             # Main Express entry point
+├── app.js             
 ├── package.json
 └── README.md
 ```
@@ -43,16 +54,16 @@ Zenlogue-2.0/
 
 | Route | Method | Description |
 |--------|---------|-------------|
-| `/` | GET | Render homepage with all posts |
+| `/home` | GET | Render homepage with all posts |
+| `/auth/signup` | GET | Render signup page|
+| `/auth/signup` | POST | Create new user and store in database |
+| `/auth/login` | GET | Render login page |
+| `/auth/login` | POST | Authenticate user credentials|
+| `/auth/logout` | GET | End session and redirect to homepage|
 | `/post/:id` | GET | Display a single post by ID |
-| `/post/new` | POST | Render new post page |
-| `/post/new/submit` | POST | Submit new post to database |
-| `/signup` | GET | Render signup page |
-| `/signup/Submit` | POST | Create new user and store in database |
-| `/login` | GET | Render login page |
-| `/login/Submit` | POST | Authenticate user credentials |
-| `/logout` | GET | End session and redirect to homepage |
-| `/about` | GET |  Render new about page |
+| `/post/create` | POST | Submit new post content and store in database |
+| `/post/id/edit` | GET | Render post edit page with post content by id |
+| `/post/id` | PATCH | Submit updated post content and update in database |
 
 ## Deployment
 
