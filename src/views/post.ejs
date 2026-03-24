@@ -26,6 +26,13 @@
             <p class="date"><%= item.created_at %></p>
             <p class="author"><%= item.user_id %></p>
           </div>
+
+          <div class="commentForm">
+            <form action="/comment/create" method="POST">
+              
+            </form>
+          </div>
+
           <% }) %>
 
       </div>
