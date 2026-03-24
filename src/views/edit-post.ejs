@@ -3,11 +3,18 @@
 <main>
 
 <div id="mainContainer">
-  <form action="/post" method="POST">
-    <input type="text" name="post_title" placeholder="Title">
-    <textarea name="post_content" placeholder="Content"></textarea>
-    <input type="hidden" name="user_id" value="<%= user.id %>">
-    <button type="submit">Publish</button>
+  <form action="/post/<%= post.post_id %>" method="POST">
+
+    <input 
+      type="text" 
+      name="post_title" 
+      value="<%= post.post_title %>" 
+      placeholder="Title"
+    >
+
+    <textarea name="post_content" placeholder="Content"><%= post.post_content %></textarea>
+    <input type="hidden" name="user_id" value="<%= post.user_id %>">
+    <button type="submit">Update</button>
   </form>
 </div>
 

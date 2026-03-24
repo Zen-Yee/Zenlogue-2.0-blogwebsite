@@ -7,6 +7,11 @@
         <% posts.forEach(item=> { %>
           <div class="postContainer">
             <h2><%= item.post_title %></h2>
+
+            <% if (currentUser && currentUser.role === "admin") { %>
+              <a href="/post/<%= item.post_id %>/edit" class="navButton">Edit</a>
+            <% } %>
+
             <p class="date"><%= item.created_at %></p>
             <p class="author"><%= item.user_id %></p>
             <p class="content">

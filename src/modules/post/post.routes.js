@@ -8,10 +8,9 @@ const router = express.Router();
 router.get("/:id", postController.specificPost);   // show single post
 
 router.post("/create", authMiddleware, requireAdmin, postController.createPost);
+router.get("/:id/edit", authMiddleware, requireAdmin, postController.editPostForm);
+router.patch("/:id", authMiddleware, requireAdmin, postController.updatePost);
 
-// router.get("/:id/edit", authMiddleware, requireAdmin, postController.editPostForm);
-
-// router.patch("/:id", authMiddleware, requireAdmin, postController.updatePost);
 // router.delete("/:id", authMiddleware, requireAdmin, postController.deletePost);
 
 export default router;

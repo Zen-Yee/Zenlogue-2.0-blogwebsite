@@ -16,13 +16,7 @@
       <div id="Navigation" >
         <a class="navButton active" href="/">Home</a>
         <% if(currentUser) {%>
-
-          <% if(currentUser.role === "admin") { %>
-            <a class="navButton" href="/admin">Admin</a>
-          <% } %>
-
           <a class="navButton" href="/auth/logout">Log Out</a>
-          
         <% }else{ %>
           <a class="navButton" href="/auth/login">Log In</a>
           <a class="navButton" href="/auth/signup">Sign Up</a>
